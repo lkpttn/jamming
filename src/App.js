@@ -9,8 +9,10 @@ class App extends Component {
     return (
       <div className="App">
         <Searchbar />
-        <ResultList />
-        <div>Playlist</div>
+        <div className="search-results">
+          <ResultList />
+          <div>Playlist</div>
+        </div>
       </div>
     );
   }

@@ -9,3 +9,12 @@
   font-family: 'Work Sans', sans-serif;
   color: white;
 }
+
+.search-results {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-results div {
+  flex-grow: 1;
+}
