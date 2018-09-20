@@ -11,18 +11,11 @@
 }
 
 .search-results {
-  position: relative;
+  display: flex;
+  justify-content: space-around;
 }
 
 .search-results .column {
-  float: left;
-  width: 50%;
-}
-
-.clearfix:after {
-  content: '.';
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both;
+  width: 49%;
+  background-color: #222;
 }
