@@ -9,9 +9,9 @@ class App extends Component {
     return (
       <div className="App">
         <Searchbar />
-        <div className="search-results">
-          <ResultList />
-          <div>Playlist</div>
+        <div className="search-results clearfix">
+          <ResultList className="column" />
+          <div className="column">Playlist</div>
         </div>
       </div>
     );

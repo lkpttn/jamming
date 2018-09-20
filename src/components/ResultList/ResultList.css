@@ -1,3 +1,12 @@
 .resultlist {
   color: #000;
+  text-align: left;
+}
+
+.resultlist ul {
+  list-style: none;
+}
+
+.resultlist ul li {
+  border-bottom: 1px #eee solid;
 }

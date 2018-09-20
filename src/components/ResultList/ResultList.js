@@ -6,7 +6,7 @@ import Result from '../Result/Result';
 class ResultList extends React.Component {
   render() {
     return (
-      <div className="resultlist">
+      <div className={`resultlist ${this.props.className}`}>
         <h2>Results</h2>
         {/* Put result <li>s here */}
         <ul>

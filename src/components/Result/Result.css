@@ -1,4 +1,17 @@
 .result {
   background: #222;
-  margin: 15px;
+  padding: 10px;
+  color: white;
+}
+
+.result .song-name {
+  width: 100%;
+}
+
+.result .artist-name {
+  display: inline;
+}
+
+.result .album-name {
+  display: inline;
 }
