@@ -17,11 +17,11 @@ const Spotify = {
       })
       .then(jsonResponse => {
         // Manipulate the json response here and map to an array.
-        console.log(jsonResponse);
         if (jsonResponse.tracks) {
+          console.log(jsonResponse);
           return jsonResponse.tracks.items.map(track => ({
             trackName: track.name,
-            artistName: track.artists.name,
+            artistName: track.artists[0].name,
             albumName: track.album.name,
           }));
         }

@@ -11,8 +11,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      results: ['0', '1', '2'],
-      playlist: ['0'],
+      results: [],
+      playlist: [],
     };
 
     this.searchSpotify = this.searchSpotify.bind(this);

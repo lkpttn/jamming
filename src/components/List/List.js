@@ -8,7 +8,15 @@ class List extends React.Component {
     return (
       <ul className="song-list">
         {this.props.results.map(result => {
-          return <Result key={result} />;
+          console.log(result);
+          return (
+            <Result
+              key={result}
+              trackName={result.trackName}
+              artistName={result.artistName}
+              albumName={result.albumName}
+            />
+          );
         })}
       </ul>
     );
