@@ -8,10 +8,9 @@ class List extends React.Component {
     return (
       <ul className="song-list">
         {this.props.results.map(result => {
-          console.log(result);
           return (
             <Result
-              key={result}
+              key={result.id}
               trackName={result.trackName}
               artistName={result.artistName}
               albumName={result.albumName}
