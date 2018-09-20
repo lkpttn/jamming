@@ -9,6 +9,11 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      results: [1, 2, 3],
+      playlist: [],
+    };
+
     this.searchSpotify = this.searchSpotify.bind(this);
   }
 
@@ -26,7 +31,7 @@ class App extends Component {
         <div className="search-results">
           <div className="column">
             <h2>Results</h2>
-            <List />
+            <List results={this.state.results} />
           </div>
           <PlaylistList className="column" />
         </div>

@@ -7,9 +7,9 @@ class List extends React.Component {
   render() {
     return (
       <ul className="song-list">
-        <li>
-          <Result />
-        </li>
+        <Result />
+        <Result />
+        <Result />
       </ul>
     );
   }
