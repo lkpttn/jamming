@@ -21,11 +21,12 @@ class App extends Component {
   searchSpotify(term) {
     // References the Spotify utility to make a request
     // using the terms fed by the child object that gets passed this prop
-    console.log('Searching for ' + term);
-    Spotify.search(term).then(tracks => {
-      console.log('Setting the state to the search result');
-      this.setState({ results: tracks });
-    });
+    Spotify.getAuthToken();
+
+    // Spotify.search(term).then(tracks => {
+    //   console.log('Setting the state to the search result');
+    //   this.setState({ results: tracks });
+    // });
   }
 
   render() {
