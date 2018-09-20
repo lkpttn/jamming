@@ -4,6 +4,7 @@ import './App.css';
 import Searchbar from './components/Searchbar/SearchBar';
 import List from './components/List/List';
 import PlaylistList from './components/PlaylistList/PlaylistList';
+import Spotify from './util/Spotify';
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends Component {
 
     this.state = {
       results: ['0', '1', '2'],
-      playlist: [],
+      playlist: ['0'],
     };
 
     this.searchSpotify = this.searchSpotify.bind(this);
@@ -21,8 +22,9 @@ class App extends Component {
     // References the Spotify utility to make a request
     // using the terms fed by the child object that gets passed this prop
     console.log('Searching for ' + term);
-
-    // Then sets the result state to pass to the List
+    Spotify.search(term).then(tracks => {
+      this.setState({ results: tracks });
+    });
   }
 
   render() {
