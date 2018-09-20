@@ -3,6 +3,7 @@ import './App.css';
 
 import Searchbar from './components/Searchbar/SearchBar';
 import List from './components/List/List';
+import PlaylistList from './components/PlaylistList/PlaylistList';
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
             <h2>Results</h2>
             <List />
           </div>
-          <div className="column">Playlist</div>
+          <PlaylistList className="column" />
         </div>
       </div>
     );
