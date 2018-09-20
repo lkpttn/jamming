@@ -4,8 +4,7 @@ const clientID = '3a721c39583b4ea89334c18ae7ea0ec1';
 const Spotify = {
   // Need some method for individual user auth.
   getAuthToken() {
-    const authURL =
-      'https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/authorize';
+    const authURL = 'https://accounts.spotify.com/authorize';
     const queryParams =
       '?response_type=token&&scope=user-read-private%20user-read-email&client_id=';
     const redirectURL = '&redirect_uri=http://localhost:3000/';
