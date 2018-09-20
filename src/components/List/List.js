@@ -7,9 +7,9 @@ class List extends React.Component {
   render() {
     return (
       <ul className="song-list">
-        <Result />
-        <Result />
-        <Result />
+        {this.props.results.map(result => {
+          return <Result key={result} />;
+        })}
       </ul>
     );
   }

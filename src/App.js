@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      results: [1, 2, 3],
+      results: ['0', '1', '2'],
       playlist: [],
     };
 
@@ -24,6 +24,7 @@ class App extends Component {
 
     // Then sets the result state to pass to the List
   }
+
   render() {
     return (
       <div className="App">
@@ -31,9 +32,9 @@ class App extends Component {
         <div className="search-results">
           <div className="column">
             <h2>Results</h2>
-            <List results={this.state.results} />
+            <List results={this.state.results} type="results" />
           </div>
-          <PlaylistList className="column" />
+          <PlaylistList className="column" results={this.state.playlist} />
         </div>
       </div>
     );
