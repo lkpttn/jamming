@@ -1,15 +1,25 @@
 .result {
-  color: white;
+    color: white;
+    margin: 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px #eee solid;
 }
 
 .result .song-name {
-  width: 100%;
+    width: 90%;
+    font-size: 1.2em;
+    padding-bottom: 5px;
 }
 
 .result .artist-name {
-  display: inline;
+    display: inline;
+    padding-right: 10px;
 }
 
 .result .album-name {
-  display: inline;
+    display: inline;
+}
+
+.result .button {
+    float: right;
 }
