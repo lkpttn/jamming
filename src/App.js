@@ -16,19 +16,25 @@ class App extends Component {
         };
 
         this.searchSpotify = this.searchSpotify.bind(this);
+        this.addToPlaylist = this.addToPlaylist.bind(this);
     }
 
     searchSpotify(term) {
-        // Redirects to the auth url and gets an auth token
-        // if (this.state.token === '') {
-        //     Spotify.getAuthToken();
-        // }
-
         Spotify.search(term).then(tracks => {
             console.log('Setting the state to the search result');
             this.setState({ results: tracks });
         });
     }
+
+    addToPlaylist(item) {
+        // Adds a Result item to the playlist state item, adding it to the new columm
+        console.log(`Add ${item.trackName} to playlist`);
+        this.setState({
+            playlist: [...this.state.playlist, item],
+        });
+    }
+
+    removeFromPlaylist() {}
 
     render() {
         return (
@@ -37,11 +43,16 @@ class App extends Component {
                 <div className="search-results">
                     <div className="column">
                         <h2>Results</h2>
-                        <List results={this.state.results} type="results" />
+                        <List
+                            results={this.state.results}
+                            type="results"
+                            addToPlaylist={this.addToPlaylist}
+                        />
                     </div>
                     <PlaylistList
                         className="column"
                         results={this.state.playlist}
+                        removeFromPlaylist={this.removeFromPlaylist}
                     />
                 </div>
             </div>
