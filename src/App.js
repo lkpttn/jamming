@@ -20,7 +20,9 @@ class App extends Component {
 
     searchSpotify(term) {
         // Redirects to the auth url and gets an auth token
-        //  Spotify.getAuthToken();
+        // if (this.state.token === '') {
+        //     Spotify.getAuthToken();
+        // }
 
         Spotify.search(term).then(tracks => {
             console.log('Setting the state to the search result');

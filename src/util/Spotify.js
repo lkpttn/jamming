@@ -1,5 +1,4 @@
-const token =
-    'BQArw6HvZZ5ap2m9FirhVplw9AYd-HBonLIyjWSg-mvvznv9T9S_ve-fhmG7lMynKdCRyWwkJcl9tY0relUtBWCBEQhBdQcDzKXYoXASDOCrplrCl9BvUdNTbNJYh5COujjtVcfQvPrlQ159ZSvg3TTIUhdiY13VZhM';
+let token = '';
 const clientID = '3a721c39583b4ea89334c18ae7ea0ec1';
 
 const Spotify = {
@@ -9,11 +8,17 @@ const Spotify = {
             '?response_type=token&&scope=user-read-private%20user-read-email&client_id=';
         const redirectURL = '&redirect_uri=http://localhost:3000/';
 
-        console.log('Query: ' + authURL + queryParams + clientID + redirectURL);
-
+        // Sends an auth request to Spotify and redirects us to a url with an access_token in it.
         window.location.assign(authURL + queryParams + clientID + redirectURL);
+    },
 
-        // TODO: Pull the token out of the url and assign it to the token variable.
+    readAuthToken() {
+        // Pulls a parameter called #access_token out of the url and assigns it to the token variable.
+        const newURL = window.location.href;
+        const url = new URL(newURL);
+        const paramsString = url.hash;
+        const searchParams = new URLSearchParams(paramsString);
+        token = searchParams.get('#access_token');
     },
 
     search(term) {
@@ -21,6 +26,12 @@ const Spotify = {
             'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search';
         const queryParams = '?q=';
         const typeParams = '&type=track';
+
+        // If token is blank, try to read it from the url.
+        // Can I out the auth call in here?
+        if (token === '') {
+            this.readAuthToken();
+        }
 
         console.log('Query: ' + searchURL + queryParams + term + typeParams);
         // Make a GET request to the Spotify API and search for the term
