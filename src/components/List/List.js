@@ -19,6 +19,7 @@ class List extends React.Component {
                     return (
                         <Result
                             key={result.id}
+                            id={result.id}
                             trackName={result.trackName}
                             artistName={result.artistName}
                             albumName={result.albumName}

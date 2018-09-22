@@ -17,6 +17,7 @@ class App extends Component {
 
         this.searchSpotify = this.searchSpotify.bind(this);
         this.addToPlaylist = this.addToPlaylist.bind(this);
+        this.removeFromPlaylist = this.removeFromPlaylist.bind(this);
     }
 
     searchSpotify(term) {
@@ -34,7 +35,24 @@ class App extends Component {
         });
     }
 
-    removeFromPlaylist() {}
+    removeFromPlaylist(item) {
+        console.log(`Remove ${item.trackName} from playlist`);
+        // Search the state playlist array for an item with a specific string
+        // This should be very unique
+        // Get the index of that element
+        const stateItem = this.state.playlist.find(
+            stateItem => stateItem.id === item.id,
+        );
+        const index = this.state.playlist.indexOf(stateItem);
+        const tempPlaylistArray = this.state.playlist;
+        if (index !== -1) {
+            tempPlaylistArray.splice(index, 1);
+            // Remove the element at that index from the playlist state
+            this.setState({
+                playlist: tempPlaylistArray,
+            });
+        }
+    }
 
     render() {
         return (

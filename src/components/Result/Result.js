@@ -9,14 +9,18 @@ class Result extends React.Component {
     }
     handleClick() {
         // When clicked, send back a song object
-        const playlistResult = {
+        const clickResult = {
             albumName: this.props.albumName,
             artistName: this.props.artistName,
-            id: this.props.key,
+            id: this.props.id,
             trackName: this.props.trackName,
         };
 
-        this.props.method(playlistResult);
+        if (this.props.type === 'results') {
+            this.props.method(clickResult);
+        } else if (this.props.type === 'playlist') {
+            this.props.method(clickResult);
+        }
     }
 
     render() {

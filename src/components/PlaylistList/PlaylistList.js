@@ -8,7 +8,11 @@ class PlaylistList extends React.Component {
         return (
             <div className={this.props.className}>
                 <h2>Playlist</h2>
-                <List results={this.props.results} type="playlist" />
+                <List
+                    results={this.props.results}
+                    type="playlist"
+                    removeFromPlaylist={this.props.removeFromPlaylist}
+                />
                 <button>Save to Spotify</button>
             </div>
         );
