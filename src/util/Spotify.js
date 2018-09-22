@@ -85,11 +85,11 @@ const Spotify = {
             });
     },
 
-    savePlaylist(playlist) {
+    savePlaylist(playlist, title) {
         // Make a POST request to the Spotify API and save the playlist
         const playlistURL = 'https://api.spotify.com/v1/users/';
         const playlistParams = '/playlists';
-        const playlistName = { name: 'Playlist' };
+        const playlistName = { name: title };
 
         const addTracksURL = 'https://api.spotify.com/v1/playlists/';
         const trackParams = '/tracks';

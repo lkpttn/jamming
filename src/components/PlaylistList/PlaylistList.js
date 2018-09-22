@@ -8,17 +8,33 @@ class PlaylistList extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            term: 'Playlist',
+        };
+
         this.saveToSpotify = this.saveToSpotify.bind(this);
+        this.handleTermChange = this.handleTermChange.bind(this);
     }
 
     saveToSpotify() {
-        Spotify.savePlaylist(this.props.results);
+        Spotify.savePlaylist(this.props.results, this.state.term);
+    }
+
+    handleTermChange(event) {
+        // When someone types (an event), change the state to that value.
+        this.setState({ term: event.target.value });
     }
 
     render() {
         return (
             <div className={this.props.className}>
-                <h2>Playlist</h2>
+                <h2>
+                    <input
+                        onChange={this.handleTermChange}
+                        type="text"
+                        placeholder="Playlist"
+                    />
+                </h2>
                 <List
                     results={this.props.results}
                     type="playlist"
