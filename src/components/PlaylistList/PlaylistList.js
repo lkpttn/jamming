@@ -2,8 +2,18 @@ import React from 'react';
 import './PlaylistList.css';
 
 import List from '../List/List';
+import Spotify from '../../util/Spotify';
 
 class PlaylistList extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.saveToSpotify = this.saveToSpotify.bind(this);
+    }
+
+    saveToSpotify() {
+        Spotify.savePlaylist(this.props.results);
+    }
     render() {
         return (
             <div className={this.props.className}>
@@ -13,7 +23,7 @@ class PlaylistList extends React.Component {
                     type="playlist"
                     removeFromPlaylist={this.props.removeFromPlaylist}
                 />
-                <button>Save to Spotify</button>
+                <button onClick={this.saveToSpotify}>Save to Spotify</button>
             </div>
         );
     }
