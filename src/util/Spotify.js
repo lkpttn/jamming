@@ -88,11 +88,18 @@ const Spotify = {
         // Make a POST request to the Spotify API and save the playlist
         const playlistURL = 'https://api.spotify.com/v1/users/';
         const playlistParams = '/playlists';
-
         const playlistName = { name: 'Playlist' };
 
+        const addTracksURL =
+            'https://api.spotify.com/v1/playlists/{playlist_id}';
+        const trackParams = '/tracks';
+        const playlistURIs = { uris: playlist };
+
         // Get the user ID and get started
+        // Some real voodoo going on here trying to time out creating the playlist and adding tracks
+        // after the user id has been retrieved
         this.getUserId().then(response => {
+            // Create a new playlist
             fetch(playlistURL + response + playlistParams, {
                 method: 'POST',
                 headers: {
@@ -100,10 +107,30 @@ const Spotify = {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(playlistName),
-            }).then(response => {
-                console.log(response);
-            });
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                .then(jsonResponse => {
+                    // Add tracks to the playlist
+                    // Grab the id from the jsonReponse
+                    fetch(addTracksURL + jsonResponse.id + trackParams, {
+                        method: 'POST',
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(playlistURIs),
+                    });
+                })
+                .then(response => {
+                    console.log(response);
+                });
         });
+
+        // Add tracks to the playlist
     },
 };
 
