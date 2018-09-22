@@ -41,7 +41,7 @@ class App extends Component {
         // This should be very unique
         // Get the index of that element
         const stateItem = this.state.playlist.find(
-            stateItem => stateItem.id === item.id,
+            stateItem => stateItem.uri === item.uri,
         );
         const index = this.state.playlist.indexOf(stateItem);
         const tempPlaylistArray = this.state.playlist;

@@ -76,6 +76,7 @@ const Spotify = {
                     console.log(jsonResponse);
                     return jsonResponse.tracks.items.map(track => ({
                         id: track.id,
+                        uri: track.uri,
                         trackName: track.name,
                         artistName: track.artists[0].name,
                         albumName: track.album.name,
@@ -90,10 +91,12 @@ const Spotify = {
         const playlistParams = '/playlists';
         const playlistName = { name: 'Playlist' };
 
-        const addTracksURL =
-            'https://api.spotify.com/v1/playlists/{playlist_id}';
+        const addTracksURL = 'https://api.spotify.com/v1/playlists/';
         const trackParams = '/tracks';
-        const playlistURIs = { uris: playlist };
+        const URIarray = playlist.map(result => {
+            return result.uri;
+        });
+        const playlistURIs = { uris: URIarray };
 
         // Get the user ID and get started
         // Some real voodoo going on here trying to time out creating the playlist and adding tracks
@@ -110,12 +113,14 @@ const Spotify = {
             })
                 .then(response => {
                     if (response.ok) {
+                        console.log('Playlist created');
                         return response.json();
                     }
                 })
                 .then(jsonResponse => {
                     // Add tracks to the playlist
                     // Grab the id from the jsonReponse
+                    console.log(jsonResponse.id);
                     fetch(addTracksURL + jsonResponse.id + trackParams, {
                         method: 'POST',
                         headers: {
@@ -126,7 +131,7 @@ const Spotify = {
                     });
                 })
                 .then(response => {
-                    console.log(response);
+                    console.log(response.json());
                 });
         });
 

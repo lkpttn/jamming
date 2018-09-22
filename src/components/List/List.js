@@ -20,6 +20,7 @@ class List extends React.Component {
                         <Result
                             key={result.id}
                             id={result.id}
+                            uri={result.uri}
                             trackName={result.trackName}
                             artistName={result.artistName}
                             albumName={result.albumName}

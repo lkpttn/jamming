@@ -13,6 +13,7 @@ class Result extends React.Component {
             albumName: this.props.albumName,
             artistName: this.props.artistName,
             id: this.props.id,
+            uri: this.props.uri,
             trackName: this.props.trackName,
         };
 
