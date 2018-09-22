@@ -14,6 +14,7 @@ class PlaylistList extends React.Component {
     saveToSpotify() {
         Spotify.savePlaylist(this.props.results);
     }
+
     render() {
         return (
             <div className={this.props.className}>

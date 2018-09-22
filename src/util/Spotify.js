@@ -25,6 +25,7 @@ const Spotify = {
         // Make a GET request to Spotify and return the user's id
         const idURL = 'https://api.spotify.com/v1/me';
 
+        // If there's no token, get that first
         if (token === '') {
             this.readAuthToken();
         }
@@ -73,7 +74,6 @@ const Spotify = {
             .then(jsonResponse => {
                 // Manipulate the json response here and map to an array.
                 if (jsonResponse.tracks) {
-                    console.log(jsonResponse);
                     return jsonResponse.tracks.items.map(track => ({
                         id: track.id,
                         uri: track.uri,
@@ -101,6 +101,9 @@ const Spotify = {
         // Get the user ID and get started
         // Some real voodoo going on here trying to time out creating the playlist and adding tracks
         // after the user id has been retrieved
+
+        // We could move the ID get request in here too for an even longer promise chain since we aren't using it anywhere else
+        // TODO: Think about doing this with async/await
         this.getUserId().then(response => {
             // Create a new playlist
             fetch(playlistURL + response + playlistParams, {
@@ -113,14 +116,12 @@ const Spotify = {
             })
                 .then(response => {
                     if (response.ok) {
-                        console.log('Playlist created');
                         return response.json();
                     }
                 })
                 .then(jsonResponse => {
                     // Add tracks to the playlist
-                    // Grab the id from the jsonReponse
-                    console.log(jsonResponse.id);
+                    // Grabbing the id from the jsonReponse
                     fetch(addTracksURL + jsonResponse.id + trackParams, {
                         method: 'POST',
                         headers: {
@@ -134,8 +135,6 @@ const Spotify = {
                     console.log(response.json());
                 });
         });
-
-        // Add tracks to the playlist
     },
 };
 
