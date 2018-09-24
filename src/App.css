@@ -1,24 +1,25 @@
 .App {
-  height: 100%;
-  padding: 0 15%;
-  background: url('./image_assets/background_photo_desktop.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Work Sans', sans-serif;
-  color: white;
+    height: 100%;
+    padding: 0 15%;
+    background: url('./image_assets/background_photo_desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    color: white;
 }
 
 .search-results {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .search-results .column {
-  width: 49%;
-  background-color: #222;
+    width: 49%;
+    background-color: #222;
 }
 
 .column h2 {
-  padding: 15px;
+    padding: 15px;
 }

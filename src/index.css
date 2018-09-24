@@ -1,6 +1,27 @@
 body,
 html,
 #root {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    font-size: 18px;
+}
+
+h1 {
+    padding: 0.77rem 0;
+    background-color: #010c3f;
+    text-align: center;
+    font-family: 'Source Sans', sans-serif;
+    font-size: 1.88rem;
+    color: #fff;
+}
+
+h1 .highlight {
+    color: #6c41ec;
+}
+
+h2 {
+    font-family: 'Source Sans', sans-serif;
 }
