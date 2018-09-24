@@ -68,7 +68,7 @@ class App extends Component {
                         />
                     </div>
                     <PlaylistList
-                        className="column"
+                        className="column playlist"
                         results={this.state.playlist}
                         removeFromPlaylist={this.removeFromPlaylist}
                     />

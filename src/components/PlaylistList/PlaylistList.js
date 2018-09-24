@@ -40,7 +40,9 @@ class PlaylistList extends React.Component {
                     type="playlist"
                     removeFromPlaylist={this.props.removeFromPlaylist}
                 />
-                <button onClick={this.saveToSpotify}>Save to Spotify</button>
+                <button className="save-button" onClick={this.saveToSpotify}>
+                    Save to Spotify
+                </button>
             </div>
         );
     }

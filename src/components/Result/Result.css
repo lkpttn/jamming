@@ -21,5 +21,12 @@
 }
 
 .result .button {
+    cursor: pointer;
+    font-size: 1.05rem;
+    transition: color 0.25s;
     float: right;
+}
+
+.result .button:hover {
+    color: rgba(265, 265, 265, 0.5);
 }
